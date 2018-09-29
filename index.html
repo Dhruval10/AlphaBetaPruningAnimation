@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="abTreePractice">
+  <head>
+    <meta charset="utf-8">
+    <title>Alpha-Beta Pruning Practice</title>   
+    <link rel="canonical" href="http://alphabeta.alekskamko.com">
+    <meta property="og:title" content="Alpha-Beta Pruning Practice">
+    <meta property="og:site_name" content="Alpha-Beta Pruning Practice">
+    <meta property="og:image" content="http://alekskamko.com/static/img/alphabeta.jpg">
+    <meta property="og:description" content="D3.js web app for visualizing and understanding the Alpha-Beta Pruning algorithm. Developed for UC Berkeley's CS61B.">
+    <meta property="og:type" content="website">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/5.0.12/bootstrap-slider.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/5.0.12/css/bootstrap-slider.min.css">
+    <link rel="stylesheet" href="*.css">
+    
+  </head>
+  <body ng-controller="MainCtrl">
+    <nav class="navbar navbar-inverse navbar-static-top nomargin" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand">Alpha-Beta Pruning Practice</span>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+          <li ng-click="setUseAb(true)" class="{{useAb ? 'active' : ''}}"><a>αβ</a></li>
+          <li ng-click="setUseAb(false)" class="{{!useAb ? 'active' : ''}}"><a>Cutoff</a></li>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid nopadding">
+      <ab-tree class="ab-tree" tree="tree" use-ab="useAb" re-render="reRender"></ab-tree>
+      <div class="container-fluid ctrl-panel">
+        <div class="row text-center">
+          <button ng-click="toggleABVisual()" type="button" class="btn btn-default">
+            {{actionLQ.inAction ? 'Stop' : 'Start'}} Animation
+          </button>
+        </div>
+        <div class="{{actionLQ.inAction ? '' : 'hidden'}}">
+          <div class="row text-center">
+            <div class="btn-group">
+              <button ng-disabled="!actionLQ.inAction" ng-click="play()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-play"></span>
+              </button>
+              <button ng-disabled="!actionLQ.inAction" ng-click="pause()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-pause"></span>
+              </button>
+              <button ng-disabled="!actionLQ.inAction" ng-click="stepBackward()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-backward"></span>
+              </button>
+              <button ng-disabled="!actionLQ.inAction" ng-click="stepForward()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-forward"></span>
+              </button>
+              <button ng-disabled="!actionLQ.inAction" ng-click="goToBeginning()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-fast-backward"></span>
+              </button>
+              <button ng-disabled="!actionLQ.inAction" ng-click="goToEnd()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-fast-forward"></span>
+              </button>
+            </div>
+          </div>
+          
+  </body>
+</html>
